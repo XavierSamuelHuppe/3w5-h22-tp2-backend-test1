@@ -24,12 +24,12 @@ jobs:
       - run: npm run build
       - run: ls -al
 workflows:
-  elastic-beanstalk-workflow:
+  build:
     jobs:
       - checkoutAndTest
       - integrateFrontend:
-        requires:
-          - checkoutAndTest
+          requires:
+            - checkoutAndTest
       # - node/test
       # - eb/deploy:
       #     application-name: xavier3-app
