@@ -30,7 +30,7 @@ jobs:
       - image: "cimg/base:stable"
     steps:
       - attach_workspace:
-        at: .
+          at: .
       - run: ls -al
       # - eb/setup
       # - run:
