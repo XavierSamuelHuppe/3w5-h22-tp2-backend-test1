@@ -21,7 +21,7 @@ jobs:
       - run: git clone https://github.com/XavierSamuelHuppe/3w5-h22-tp2-frontend
       - run: cd 3w5-h22-tp2-frontend && npm install
       - run: cd 3w5-h22-tp2-frontend && npm run build
-      - run: cp 3w5-h22-tp2-frontend/build/* 3w5-h22-tp2-frontend/public
+      - run: cp -r 3w5-h22-tp2-frontend/build/* 3w5-h22-tp2-frontend/public
       - run: cd 3w5-h22-tp2-backtend/public && ls -al
 workflows:
   build:
