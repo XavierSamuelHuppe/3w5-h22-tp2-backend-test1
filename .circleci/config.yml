@@ -8,7 +8,7 @@ jobs:
     docker:
       - image: cimg/node:17.4.0
     steps:
-      - git clone https://github.com/XavierSamuelHuppe/3w5-h22-tp2-backend-test1
+      - run: git clone https://github.com/XavierSamuelHuppe/3w5-h22-tp2-backend-test1
       - run: npm install
       - run: npm run test
   integrateFrontend:
@@ -21,10 +21,10 @@ jobs:
       - run: cd 3w5-h22-tp2-frontend-test1 && npm run build
       - run: mkdir 3w5-h22-tp2-backend-test1/public
       - run: cp -r 3w5-h22-tp2-frontend-test1/build/* 3w5-h22-tp2-backend-test1/public
-      # - persist_to_workspace:
-      #     root: .
-      #     paths:
-      #       - .
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./3w5-h22-tp2-backend-test1
 workflows:
   build:
     jobs:
@@ -35,6 +35,7 @@ workflows:
       - eb/deploy:
           application-name: xavier3-app
           environment-name: xavier3-app-dev
+          app-dir: ./3w5-h22-tp2-backend-test1
           filters:
             branches:
               only:
