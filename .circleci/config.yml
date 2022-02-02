@@ -31,10 +31,9 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - run: cd 3w5-h22-tp2-backend-test1 && ls -al
       - eb/setup
       - run: cd 3w5-h22-tp2-backend-test1 && eb init xavier3-app -r $AWS_DEFAULT_REGION -p node.js
-      - run: cd 3w5-h22-tp2-backend-test1 && ls -al
+      - run: cd 3w5-h22-tp2-backend-test1/public && ls -al
       - run: cd 3w5-h22-tp2-backend-test1 && eb deploy xavier3-app-dev
       - run: cd 3w5-h22-tp2-backend-test1 && eb status
 
