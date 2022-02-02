@@ -17,10 +17,10 @@ jobs:
     steps:
       - run: git clone https://github.com/XavierSamuelHuppe/3w5-h22-tp2-backend-test1
       - run: git clone https://github.com/XavierSamuelHuppe/3w5-h22-tp2-frontend-test1
-      - run: cd 3w5-h22-tp2-frontend && npm install
-      - run: cd 3w5-h22-tp2-frontend && npm run build
-      - run: mkdir 3w5-h22-tp2-backend/public
-      - run: cp -r 3w5-h22-tp2-frontend/build/* 3w5-h22-tp2-backend/public
+      - run: cd 3w5-h22-tp2-frontend-test1 && npm install
+      - run: cd 3w5-h22-tp2-frontend-test1 && npm run build
+      - run: mkdir 3w5-h22-tp2-backend-test1/public
+      - run: cp -r 3w5-h22-tp2-frontend-test1/build/* 3w5-h22-tp2-backend-test1/public
       - persist_to_workspace:
           root: .
           paths:
