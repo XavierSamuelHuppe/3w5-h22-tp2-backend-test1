@@ -24,7 +24,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - .
+            - 3w5-h22-tp2-backend-test1
   deploy:
     docker:
       - image: "cimg/base:stable"
@@ -32,12 +32,13 @@ jobs:
       - attach_workspace:
           at: .
       - run: ls -al
-      # - eb/setup
-      # - run:
-      #     command: |
-      #       eb init xavier3-app -r $AWS_DEFAULT_REGION -p node.js
-      #       eb deploy xavier3-app-dev
-      #       eb status
+      - eb/setup
+      - run:
+          command: |
+            cd 3w5-h22-tp2-backend-test1
+            eb init xavier3-app -r $AWS_DEFAULT_REGION -p node.js
+            eb deploy xavier3-app-dev
+            eb status
 workflows:
   build:
     jobs:
