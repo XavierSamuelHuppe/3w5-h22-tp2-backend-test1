@@ -15,13 +15,12 @@ jobs:
     docker:
       - image: cimg/node:17.4.0
     steps:
-      - run: git clone https://github.com/XavierSamuelHuppe/3w5-h22-tp2-backend
-      - run: git clone https://github.com/XavierSamuelHuppe/3w5-h22-tp2-frontend
+      - run: git clone https://github.com/XavierSamuelHuppe/3w5-h22-tp2-backend-test1
+      - run: git clone https://github.com/XavierSamuelHuppe/3w5-h22-tp2-frontend-test1
       - run: cd 3w5-h22-tp2-frontend && npm install
       - run: cd 3w5-h22-tp2-frontend && npm run build
       - run: mkdir 3w5-h22-tp2-backend/public
       - run: cp -r 3w5-h22-tp2-frontend/build/* 3w5-h22-tp2-backend/public
-      - run: cd 3w5-h22-tp2-backend/public && ls -al
       - persist_to_workspace:
           root: .
           paths:
@@ -36,7 +35,6 @@ workflows:
       - eb/deploy:
           application-name: xavier3-app
           environment-name: xavier3-app-dev
-          # app-dir: ./3w5-h22-tp2-backend
           filters:
             branches:
               only:
