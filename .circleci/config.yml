@@ -20,7 +20,7 @@ jobs:
       - run: cd 3w5-h22-tp2-frontend-test1 && npm install
       - run: cd 3w5-h22-tp2-frontend-test1 && npm run build
       - run: mkdir 3w5-h22-tp2-backend-test1/public
-      - run: cp -r 3w5-h22-tp2-frontend-test1/build/* 3w5-h22-tp2-backend-test1/public
+      - run: cp -r 3w5-h22-tp2-frontend-test1/build/ 3w5-h22-tp2-backend-test1/public
       - persist_to_workspace:
           root: .
           paths:
@@ -34,6 +34,7 @@ jobs:
       - eb/setup
       - run: cd 3w5-h22-tp2-backend-test1 && eb init xavier3-app -r $AWS_DEFAULT_REGION -p node.js
       - run: cd 3w5-h22-tp2-backend-test1/public && ls -al
+      - run: cd 3w5-h22-tp2-backend-test1/public && cat .env
       - run: cd 3w5-h22-tp2-backend-test1 && eb deploy xavier3-app-dev
       - run: cd 3w5-h22-tp2-backend-test1 && eb status
 
