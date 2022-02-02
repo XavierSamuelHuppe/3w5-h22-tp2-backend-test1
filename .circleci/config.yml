@@ -29,7 +29,15 @@ jobs:
     docker:
       - image: "cimg/base:stable"
     steps:
+      - attach_workspace:
+        at: .
       - run: ls -al
+      # - eb/setup
+      # - run:
+      #     command: |
+      #       eb init xavier3-app -r $AWS_DEFAULT_REGION -p node.js
+      #       eb deploy xavier3-app-dev
+      #       eb status
 workflows:
   build:
     jobs:
@@ -43,7 +51,6 @@ workflows:
       # - eb/deploy:
       #     application-name: xavier3-app
       #     environment-name: xavier3-app-dev
-      #     app-dir: ./3w5-h22-tp2-backend-test1
       #     filters:
       #       branches:
       #         only:
