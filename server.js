@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import cors from "cors";
 
@@ -12,6 +13,8 @@ app.get("/newClass", (req, res) => {
   const yourNewClass = classes[index];
   res.send(yourNewClass);
 });
+
+app.use(express.static("public"));
 
 app.listen(process.env.PORT);
 console.log("backend started");
