@@ -23,7 +23,7 @@ jobs:
       - run: cd 3w5-h22-tp2-frontend && npm run build
       - run: mkdir 3w5-h22-tp2-backend/public
       - run: cp -r 3w5-h22-tp2-frontend/build/* 3w5-h22-tp2-backend/public
-      - run: cd 3w5-h22-tp2-backtend/public && ls -al
+      - run: cd 3w5-h22-tp2-backend/public && ls -al
 workflows:
   build:
     jobs:
