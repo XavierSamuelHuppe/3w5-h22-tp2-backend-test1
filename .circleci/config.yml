@@ -33,7 +33,7 @@ workflows:
       - eb/deploy:
           application-name: xavier3-app
           environment-name: xavier3-app-dev
-          app-dir: 3w5-h22-tp2-backend
+          app-dir: ./3w5-h22-tp2-backend
           filters:
             branches:
               only:
