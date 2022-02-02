@@ -9,8 +9,8 @@ jobs:
       - image: cimg/node:17.4.0
     steps:
       - run: git clone https://github.com/XavierSamuelHuppe/3w5-h22-tp2-backend-test1
-      - run: npm install
-      - run: npm run test
+      - run: cd 3w5-h22-tp2-backend-test1 && npm install
+      - run: cd 3w5-h22-tp2-backend-test1 && npm run test
   integrateFrontend:
     docker:
       - image: cimg/node:17.4.0
