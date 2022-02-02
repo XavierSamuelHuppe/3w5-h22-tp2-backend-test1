@@ -9,11 +9,9 @@ jobs:
       - image: cimg/node:17.4.0
     steps:
       - checkout
-      - run: node --version
-      - run: npm --version
       - run: npm install
       - run: npm run test
-  integrateFrontend:
+  integrateFrontendAndDeploy:
     docker:
       - image: cimg/node:17.4.0
     steps:
@@ -24,6 +22,7 @@ jobs:
       - run: mkdir 3w5-h22-tp2-backend/public
       - run: cp -r 3w5-h22-tp2-frontend/build/* 3w5-h22-tp2-backend/public
       - run: cd 3w5-h22-tp2-backend/public && ls -al
+      - eb/setup
 workflows:
   build:
     jobs:
@@ -31,14 +30,14 @@ workflows:
       - integrateFrontend:
           requires:
             - checkoutAndTest
-      # - node/test
-      # - eb/deploy:
-      #     application-name: xavier3-app
-      #     environment-name: xavier3-app-dev
-      #     filters:
-      #       branches:
-      #         only:
-      #           - main
-      #     label: version-<<pipeline.number>>
-      #     requires:
-      #       - node/test
+      - eb/deploy:
+          application-name: xavier3-app
+          environment-name: xavier3-app-dev
+          app-dir: 3w5-h22-tp2-backend
+          filters:
+            branches:
+              only:
+                - main
+          label: version-<<pipeline.number>>
+          requires:
+            - integrateFrontend
