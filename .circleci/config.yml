@@ -24,7 +24,12 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - ./3w5-h22-tp2-backend-test1
+            - .
+  deploy:
+    docker:
+      - image: "cimg/base:stable"
+    steps:
+      - run: ls -al
 workflows:
   build:
     jobs:
@@ -32,14 +37,17 @@ workflows:
       - integrateFrontend:
           requires:
             - checkoutAndTest
-      - eb/deploy:
-          application-name: xavier3-app
-          environment-name: xavier3-app-dev
-          app-dir: ./3w5-h22-tp2-backend-test1
-          filters:
-            branches:
-              only:
-                - main
-          label: version-<<pipeline.number>>
+      - deploy:
           requires:
             - integrateFrontend
+      # - eb/deploy:
+      #     application-name: xavier3-app
+      #     environment-name: xavier3-app-dev
+      #     app-dir: ./3w5-h22-tp2-backend-test1
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
+      #     label: version-<<pipeline.number>>
+      #     requires:
+      #       - integrateFrontend
